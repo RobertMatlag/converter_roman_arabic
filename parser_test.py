@@ -18,6 +18,19 @@ class RomanNumeralsTest(unittest.TestCase):
         self.assertEqual(parse_roman_numeral("XLVII"), 47)
         self.assertEqual(parse_roman_numeral("LXXXIX"), 89)
 
+    def test_invalid_numbers(self):
+        with self.assertRaises(ValueError):
+            parse_roman_numeral("IIII")
+        with self.assertRaises(ValueError):
+            parse_roman_numeral("IL")
+        with self.assertRaises(ValueError):
+            parse_roman_numeral("VV")
+        with self.assertRaises(ValueError):
+            parse_roman_numeral("LL")
+        with self.assertRaises(ValueError):
+            parse_roman_numeral("VL")
+
+
 
 if __name__ == '__main__':
     unittest.main()

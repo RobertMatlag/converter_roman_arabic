@@ -1,12 +1,14 @@
 import re
 
 
-# pattern = re.compile(r'^[I]{1,3}$')
-# matches = pattern.finditer(s)
-# match = next(matches)
-# print(match)
-
 def parse_roman_numeral(s):
+    pattern = re.compile(r'[I]{4,}|[X]{4,}|IL|VX|V{2,}|L{2,}|VL')
+    matches = pattern.finditer(s)
+    match = next(matches, None)
+
+    if match is not None:
+        raise ValueError("Invalid roman number")
+
     roman_arabic_dict = {'I': 1, 'V': 5, 'X': 10, 'L': 50}
 
     index = 0
